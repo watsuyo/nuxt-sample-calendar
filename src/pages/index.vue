@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <span @click="decrease">◁</span>{{ selectedMonth }}<span @click="increase">▷</span>
-    <p>月初: {{ startDayOfMonth(selectedMonth) || currentMonth }}</p>
-    <p>月末: {{ endDayOfMonth(selectedMonth) || currentMonth }}</p>
+    <p>月初: {{ startDayOfMonth(selectedMonth | yearMonthDate) || currentMonth | yearMonthDate }}</p>
+    <p>月末: {{ endDayOfMonth(selectedMonth) | yearMonthDate || currentMonth | yearMonthDate }}</p>
   </div>
 </template>
 
