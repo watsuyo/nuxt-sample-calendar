@@ -15,6 +15,7 @@
     "@nuxt/typescript-runtime": "latest",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "dateformat": "^3.0.3",
     "nuxt": "latest",
     "nuxt-property-decorator": "^2.5.0"
   },
