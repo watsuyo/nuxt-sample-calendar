@@ -1,44 +1,76 @@
 <template>
   <div class="container">
-    <span @click="decrease">◁</span>{{ selectedMonth }}<span @click="increase">▷</span>
-    <p>月初: {{ startDayOfMonth(selectedMonth | yearMonthDate) || currentMonth | yearMonthDate }}</p>
-    <p>月末: {{ endDayOfMonth(selectedMonth) | yearMonthDate || currentMonth | yearMonthDate }}</p>
+    <div>
+      <span @click="decreaseYear">◁</span>
+      <span>{{ currentYear }}</span>
+      <span>
+        <span @click="increaseYear">▷ </span>
+      </span>
+    </div>
+    <div>
+      <span @click="increaseMonth">◁</span>
+      <span>{{ currentMonth }}</span>
+      <span>
+        <span @click="increaseMonth">▷ </span>
+      </span>
+    </div>
+    <span v-for="day in onMonthLenght(currentMonth)" :key="day.key">
+      <button @click="getMonthDay(currentMonth, day)">{{ day }}</button>
+    </span>
+    {{ selectedDateAndMonth || today }}
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+// const defaultWeek = ['月', '火', '水', '木', '金', '土', '日']
 
-interface Data {
-  selectedMonth: number
-}
+const currentYear = new Date().getFullYear()
 
 export default Vue.extend({
-  data (): Data {
+  data() {
     return {
-      selectedMonth: new Date().getMonth() + 1
+      today: new Date(),
+      selectedDateAndMonth: '',
+      currentMonth: new Date().getMonth() + 1,
+      currentYear: new Date().getFullYear()
     }
   },
   computed: {
-    currentMonth () {
-      return new Date().getMonth() + 1
+    daysOfOneMonth() {
+      return [...Array(31 + 1).keys()].slice(1)
+    },
+    monthLists() {
+      return [...Array(12 + 1).keys()].slice(1)
     }
   },
   methods: {
-    startDayOfMonth (selectedMonth: number) {
-      return new Date(2020, selectedMonth - 1, 1)
+    endDayOfMonth(selectedMonth: number) {
+      return new Date(currentYear, selectedMonth, 0)
     },
 
-    endDayOfMonth (selectedMonth: number) {
-      return new Date(2020, selectedMonth, 0)
+    onMonthLenght(month: number) {
+      return month % 2 === 0 ? 30 : this.daysOfOneMonth
     },
 
-    increase () {
-      this.selectedMonth = this.selectedMonth + 1
+    getMonthDay(month: number, day: number) {
+      const aa = (arg: number) => (arg < 10 ? '' + 0 + arg : arg)
+      this.selectedDateAndMonth = '' + this.currentYear + aa(month) + aa(day)
     },
 
-    decrease () {
-      this.selectedMonth = this.selectedMonth - 1
+    increaseMonth() {
+      this.currentMonth = this.currentMonth === 12 ? 1 : this.currentMonth + 1
+    },
+    decreaseMonth() {
+      this.currentMonth = this.currentMonth === 1 ? 12 : this.currentMonth - 1
+    },
+
+    increaseYear() {
+      this.currentYear = this.currentYear === 12 ? 1 : this.currentYear + 1
+    },
+
+    decreaseYear() {
+      this.currentYear = this.currentYear === 1 ? 12 : this.currentYear - 1
     }
   }
 })
