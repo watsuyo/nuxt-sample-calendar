@@ -7,6 +7,12 @@ export default {
   component: Button
 }
 
-const text = 'test'
+export const Default = () => ({
+  components: { Button },
+  template: '<Button />'
+})
 
-export const Emoji = () => `<Button>${text}</Button>`
+export const Shadow = () => ({
+  components: { Button },
+  template: '<Button isShadow />'
+})

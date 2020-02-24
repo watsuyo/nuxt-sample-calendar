@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Button />
     <div>
       <span @click="decreaseYear">◁</span>
       <span>{{ currentYear }}</span>
@@ -22,12 +23,14 @@
 </template>
 
 <script lang="ts">
+import Button from '~/components/atoms/Button/Button.vue'
 import Vue from 'vue'
 // const defaultWeek = ['月', '火', '水', '木', '金', '土', '日']
 
-const currentYear = new Date().getFullYear()
-
 export default Vue.extend({
+  components: {
+    Button
+  },
   data() {
     return {
       today: new Date(),
@@ -46,7 +49,7 @@ export default Vue.extend({
   },
   methods: {
     endDayOfMonth(selectedMonth: number) {
-      return new Date(currentYear, selectedMonth, 0)
+      return new Date(this.currentYear, selectedMonth, 0)
     },
 
     onMonthLenght(month: number) {
