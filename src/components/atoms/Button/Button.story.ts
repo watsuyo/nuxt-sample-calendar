@@ -7,12 +7,23 @@ export default {
   component: Button
 }
 
-export const Default = () => ({
-  components: { Button },
-  template: '<Button />'
-})
+export const Default = () => {
+  return {
+    components: { Button },
+    template: '<Button></Button>'
+  }
+}
 
-export const Shadow = () => ({
-  components: { Button },
-  template: '<Button isShadow />'
-})
+export const Shadow = () => {
+  return {
+    components: { Button },
+    template: '<Button isShadow></Button>'
+  }
+}
+
+export const Round = () => {
+  return {
+    components: { Button },
+    template: '<Button isRound></Button>'
+  }
+}
