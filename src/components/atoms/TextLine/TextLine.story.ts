@@ -14,7 +14,7 @@ export const Default = () => {
   }
 }
 
-export const MainColor = () => {
+export const Main = () => {
   return {
     data() {
       return {
@@ -27,7 +27,7 @@ export const MainColor = () => {
   }
 }
 
-export const NegaColor = () => {
+export const Nega = () => {
   return {
     data() {
       return {
@@ -40,7 +40,7 @@ export const NegaColor = () => {
   }
 }
 
-export const AccentColor = () => {
+export const Accent = () => {
   return {
     data() {
       return {
@@ -50,5 +50,31 @@ export const AccentColor = () => {
     },
     components: { TextLine },
     template: '<TextLine fontColor="accent">{{text}}</TextLine>'
+  }
+}
+
+export const Passive = () => {
+  return {
+    data() {
+      return {
+        text: '18',
+        color: 'passive'
+      }
+    },
+    components: { TextLine },
+    template: '<TextLine fontColor="passive">{{text}}</TextLine>'
+  }
+}
+
+export const Bold = () => {
+  return {
+    data() {
+      return {
+        text: 'Calendar',
+        color: 'nega'
+      }
+    },
+    components: { TextLine },
+    template: '<TextLine fontColor="nega" isBold>{{text}}</TextLine>'
   }
 }

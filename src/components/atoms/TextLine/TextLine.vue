@@ -1,5 +1,5 @@
 <template>
-  <span :class="fontColor">
+  <span class="default" :class="[fontColor, { bold: isBold }]">
     <slot />
   </span>
 </template>
@@ -13,12 +13,21 @@ export default Vue.extend({
       type: String,
       required: false,
       default: ''
+    },
+
+    isBold: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   }
 })
 </script>
 
 <style scoped>
+.default {
+  font-size: 16px;
+}
 .main {
   color: #21242b;
 }
@@ -27,5 +36,11 @@ export default Vue.extend({
 }
 .accent {
   color: #4d515c;
+}
+.passive {
+  color: #737a8c;
+}
+.bold {
+  font-weight: bold;
 }
 </style>
