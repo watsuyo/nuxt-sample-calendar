@@ -1,33 +1,27 @@
 import Vue from 'vue'
 import dateformat from 'dateformat'
 
-export function date(date: Date): string {
+Vue.filter('date', (date: Date) => {
   const format = 'dd'
   return dateformat(date, format)
-}
+})
 
-export function monthDate(date: Date): string {
+Vue.filter('monthDate', (date: Date) => {
   const format = 'mm/dd'
   return dateformat(date, format)
-}
+})
 
-export function yearMonth(date: Date): string {
-  const format = 'yyyy/mm'
+Vue.filter('yearMonth', (date: Date) => {
+  const format = 'mm/dd'
   return dateformat(date, format)
-}
+})
 
-export function yearMonthDate(date: Date): string {
+Vue.filter('yearMonthDate', (date: Date) => {
   const format = 'yyyy/mm/dd'
   return dateformat(date, format)
-}
+})
 
-export function yearMonthDateTime(date: Date): string {
+Vue.filter('yearMonthDate', (date: Date) => {
   const format = 'yyyy/mm/dd HH:MM'
   return dateformat(date, format)
-}
-
-const filters = [yearMonthDateTime, yearMonthDate, yearMonth, monthDate, date]
-
-Object.keys(filters).forEach((key) => {
-  Vue.filter(key, filters[key])
 })
