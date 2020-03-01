@@ -1,6 +1,10 @@
 <template>
-  <Button :is-shadow="isShadow" :is-round="isRound">
-    <TextLine :font-color="fontColor">
+  <Button
+    :is-shadow="isShadow"
+    :is-round="isRound"
+    :style="{ width: width + 'px', height: height + 'px' }"
+  >
+    <TextLine :font-color="fontColor" :font-size="fontSize">
       <slot />
     </TextLine>
   </Button>
@@ -25,6 +29,24 @@ export default Vue.extend({
       required: false
     },
     fontColor: {
+      type: String,
+      required: false,
+      default: ''
+    },
+
+    fontSize: {
+      type: String,
+      required: false,
+      default: ''
+    },
+
+    height: {
+      type: String,
+      required: false,
+      default: ''
+    },
+
+    width: {
       type: String,
       required: false,
       default: ''
