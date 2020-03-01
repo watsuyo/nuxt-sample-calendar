@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <Button />
     <div>
       <span @click="decreaseYear">◁</span>
       <span>{{ currentYear }}</span>
@@ -23,14 +22,13 @@
 </template>
 
 <script lang="ts">
-import Button from '~/components/atoms/Button/Button.vue'
 import Vue from 'vue'
-// const defaultWeek = ['月', '火', '水', '木', '金', '土', '日']
 
 export default Vue.extend({
-  components: {
-    Button
+  asyncData({ store }) {
+    store.dispatch('fetchCalendarData', '2020')
   },
+
   data() {
     return {
       today: new Date(),
@@ -39,14 +37,19 @@ export default Vue.extend({
       currentYear: new Date().getFullYear()
     }
   },
+
   computed: {
     daysOfOneMonth() {
       return [...Array(31 + 1).keys()].slice(1)
     },
     monthLists() {
       return [...Array(12 + 1).keys()].slice(1)
+    },
+    calendarData() {
+      return this.$store.getters.getCalendarData
     }
   },
+
   methods: {
     endDayOfMonth(selectedMonth: number) {
       return new Date(this.currentYear, selectedMonth, 0)
