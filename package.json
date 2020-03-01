@@ -32,14 +32,15 @@
     "@storybook/addon-actions": "^5.3.13",
     "@storybook/addon-links": "^5.3.13",
     "@storybook/addons": "^5.3.13",
-    "@storybook/vue": "^5.3.13",
+    "@storybook/vue": "^5.3.14",
     "@types/dateformat": "^3.0.1",
     "babel-eslint": "^10.0.1",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "tsconfig-paths-webpack-plugin": "^3.2.0"
   },
   "prettier": {
     "singleQuote": true,

@@ -4,11 +4,14 @@ module.exports = {
 	stories: ['../src/components/**/*.story.(ts)'],
 	addons: ['@storybook/addon-actions', '@storybook/addon-links'],
 	webpackFinal: async (config) => {
-		config.module.rules.push({
-			test: /\.(ts)$/
-		});
-
-		config.resolve.extensions.push('.ts');
+		config.resolve ={
+			extensions: ['ts', '.js', '.vue', '.json'],
+			alias: {
+				'vue$': 'vue/dist/vue.esm.js',
+				'assets': path.resolve('path/to/assets'),
+				'~': path.resolve(__dirname, '../src/')
+			}
+		}
 
 		config.module.rules.push({
 			test: /\.scss$/,
@@ -25,8 +28,29 @@ module.exports = {
 				{
 					loader: 'saas-loader',
 				},
+				{
+					loader: "sass-resources-loader",
+					options: {
+						resources: [
+							path.resolve(__dirname, '../src/assets/styles/_variables.styl')
+						]
+					}
+				}
 			],
 			include: path.resolve(__dirname, '../src/'),
+		});
+
+		config.module.rules.push({
+			test: /\.ts?$/,
+			use: [
+				{
+					loader: 'ts-loader',
+					options: {
+						// url: false,
+						transpileOnly: true
+					}
+				}
+			]
 		});
 
 		return config;
