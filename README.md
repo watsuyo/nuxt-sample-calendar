@@ -1,4 +1,4 @@
-# nuxt-sample-calendar
+# signe-project
 
 > My astonishing Nuxt.js project
 

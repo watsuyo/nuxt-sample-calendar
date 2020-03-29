@@ -9,4 +9,4 @@ export default {
 
 const text = 'test'
 
-export const Emoji = () => `<Button>${text}</Button>`
+export const Default = () => `<Button>${text}</Button>`
